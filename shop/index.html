@@ -74,6 +74,7 @@
             transform: scale(1);
             width: 100px;
             height: 100px;
+            text-overflow: ellipsis;
             background-image: url('Images/item-slot.png');
             background-size: 100px 100px;
             background-position: center;
@@ -138,9 +139,9 @@
 </head>
 <body style="background-image: url('../Images/background.png'); background-repeat: repeat; background-size: 120px; background-position: top left; color: rgb(85, 85, 85);">
     <div class="container">
-        <a href="/testing/ESMP/"><img src="../Images/logo.png" width=100 height=100 alt="Home" style="image-rendering: auto;"/></a>
-        <a href="/testing/ESMP/item shop"><img src="Images/store.png" width=100 height=100 alt="Shop"/></a>
-        <a href="/testing/ESMP/item shop"><img src="Images/shop.png" width=100 height=100 alt="Store"/></a>
+        <a href="/relmforged.com/"><img src="../Images/logo.png" width=100 height=100 alt="Home" style="image-rendering: auto;"/></a>
+        <a href="/realmforged.com/shop/"><img src="Images/store.png" width=100 height=100 alt="Shop"/></a>
+        <a href="/realmforged.com/shop/"><img src="Images/shop.png" width=100 height=100 alt="Store"/></a>
         <a href="#">Connect Account</a>
     </div>
     <div class="content">
@@ -185,7 +186,13 @@
                 }
             });
         }
-        
+        function dontshow(image, backup, object){
+            image.style.display = 'none';
+            var d = document.createElement("div");
+            d.style.height = backup.height;
+            object.appendChild(backup);
+            object.appendChild(d);
+        }
         function updateHTML(data) {
             for(var i = 0; i < data.length; i++){
                 itemId = data[i].itemId;
@@ -238,9 +245,14 @@
                 htmlContainer.className = "item";
                 htmlObject.className = "item-box";
                 htmlObject.href="./item.html?item="+itemId;
+                var bt = document.createElement("b");
+                bt.textContent = itemName;
+                bt.width = "75px";
+                bt.height = "75px";
+                bt.style.whiteSpace = "normal";
                 var image = document.createElement("img");
                 image.src = "Images/items/"+data[i].itemId+".png";
-                image.alt = itemName;
+                image.onerror = dontshow(image, bt, htmlObject);
                 image.width = 75;
                 image.height = 75;
                 var b = document.createElement("b");
