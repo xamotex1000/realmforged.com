@@ -349,6 +349,18 @@
             ]
         },
         {
+            "itemId": "slime_boots",
+            "listings": [
+                {
+                    "user": "default",
+                    "price": 0,
+                    "amount": 0,
+                    "type": 1,
+                    "enchantments": []
+                }
+            ]
+        },
+        {
             "itemId": "grappling_hook",
             "listings": [
                 {
