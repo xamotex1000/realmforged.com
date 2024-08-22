@@ -106,6 +106,10 @@
             font-size: (0.9);
             box-shadow: 0px 0px 5px #000
         }
+        .item-box-alt:hover {
+            transform: scale(0.9);
+            font-size: (0.9);
+        }
         .item-box:hover img{
             transform: scale(0.9);
         }
@@ -250,6 +254,7 @@
                 bt.width = "75px";
                 bt.height = "75px";
                 bt.style.whiteSpace = "normal";
+                bt.class = "item-box-alt"
                 var image = document.createElement("img");
                 image.src = "Images/items/"+data[i].itemId+".png";
                 image.onerror = dontshow(image, bt, htmlObject);
